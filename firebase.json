@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "carshowroom",
     "public": ".",
     "ignore": [
       "firebase.json",
