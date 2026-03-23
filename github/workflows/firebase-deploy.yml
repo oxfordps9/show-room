@@ -1,0 +1,14 @@
+{
+  "hosting": [
+    {
+      "target": "site-one",
+      "public": "public_school",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "site-two",
+      "public": "public_furniture",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+  ]
+}
