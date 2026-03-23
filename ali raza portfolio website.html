@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Raza | CS Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #000000; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        
+        /* Custom Gradient & Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #FFD700 0%, #FDB931 50%, #FFEA00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-border {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+        .pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+
+        /* Abstract Background Shapes */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        /* Profile Widget Specifics */
+        .profile-widget {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                        0 0 0 1px rgba(255, 215, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Tech Stack Icons */
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="blob w-[600px] h-[600px] bg-yellow-500/10 top-0 -right-48"></div>
+        <div class="blob w-[500px] h-[500px] bg-indigo-600/10 bottom-0 -left-32"></div>
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 backdrop-blur-lg bg-black/20 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-display text-xl font-bold tracking-tight">
+                ALI<span class="text-yellow-500">.</span>DEV
+            </a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Work</a>
+                <a href="#contact" class="px-5 py-2 bg-white text-black rounded-full font-semibold hover:bg-yellow-500 transition-all">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative min-h-screen flex items-center pt-20 pb-12 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-yellow-400 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                    Available for Internships
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold font-display leading-tight tracking-tight">
+                    Creative <br>
+                    <span class="gradient-text">CS Student</span> <br>
+                    & Developer
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
+                    Transforming complex problems into elegant digital solutions. Specializing in web development and software architecture at Quest Nawabshah.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#projects" class="px-8 py-4 bg-yellow-500 text-black font-bold rounded-xl hover:bg-yellow-400 transition-all hover:shadow-[0_0_30px_rgba(255,215,0,0.3)] flex items-center justify-center gap-2">
+                        View Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 border border-white/10 font-bold rounded-xl hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Widget / Profile Card -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative floating">
+                    <!-- Decorative Lines SVG -->
+                    <svg class="absolute -top-10 -left-10 w-32 h-32 text-yellow-500 opacity-20" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="1" fill="none" />
+                        <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="1" fill="none" />
+                        <path d="M10 50 H90 M50 10 V90" stroke="currentColor" stroke-width="0.5" />
+                    </svg>
+
+                    <!-- Main Profile Card -->
+                    <div class="profile-widget w-[320px] md:w-[360px] bg-[#111111] rounded-[2rem] p-6 border border-white/10">
+                        <!-- Header with Image -->
+                        <div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 border border-white/10 group">
+                            <!-- Using a high-quality placeholder for student portrait -->
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Ali Raza" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105">
+                            <!-- Status Badge -->
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                                <span class="text-xs font-medium">Online</span>
+                            </div>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold font-display">Ali Raza</h3>
+                            <p class="text-gray-400 text-sm">Computer Science Student</p>
+                            <div class="flex justify-center gap-1 mt-2">
+                                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                                <span class="text-xs text-gray-300">4th Semester - Quest Nawabshah</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini Stats -->
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <div class="bg-white/5 rounded-xl p-3 text-center border border-white/5">
+                                <div class="text-xl font-bold text-yellow-500">3.8</div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-wider">GPA</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-3 text-center border border-white/5">
+                                <div class="text-xl font-bold text-yellow-500">15+</div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-wider">Projects</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-3 text-center border border-white/5">
+                                <div class="text-xl font-bold text-yellow-500">2+</div>
+                                <div class="text-[10px] text-gray-500 uppercase tracking-wider">Years Exp</div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="flex justify-center gap-3">
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -bottom-5 -right-5 bg-[#161616] px-4 py-2 rounded-xl border border-white/10 shadow-xl flex items-center gap-3">
+                        <i class="fas fa-code text-yellow-500"></i>
+                        <span class="text-sm font-medium">Full Stack Dev</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex items-center gap-4 mb-16">
+                <span class="text-yellow-500 font-mono text-sm">02.</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display">Tech Stack & Skills</h2>
+                <div class="flex-1 h-px bg-white/10"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Skill Card -->
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-html5 text-4xl text-orange-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">HTML5</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">CSS3</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">JavaScript</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-python text-4xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">Python</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">React</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-node-js text-4xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">Node.js</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fas fa-database text-4xl text-purple-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">SQL</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-git-alt text-4xl text-red-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">Git</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-figma text-4xl text-pink-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">UI Design</span>
+                </div>
+                 <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-java text-4xl text-red-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">Java</span>
+                </div>
+                <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fab fa-php text-4xl text-indigo-300 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">PHP</span>
+                </div>
+                 <div class="tech-icon glass-card p-6 rounded-2xl flex flex-col items-center justify-center aspect-square border border-white/5 hover:border-yellow-500/50 group">
+                    <i class="fas fa-brain text-4xl text-yellow-300 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-medium text-sm">DSA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex items-center gap-4 mb-16">
+                <span class="text-yellow-500 font-mono text-sm">03.</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display">Featured Projects</h2>
+                <div class="flex-1 h-px bg-white/10"></div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111111] border border-white/5 hover:border-yellow-500/30 transition-all duration-500">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt="Student Management System" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute top-0 left-6 -translate-y-1/2 bg-yellow-500 text-black p-2 rounded-lg">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">Student Management System</h3>
+                        <p class="text-gray-400 text-sm mb-4">A comprehensive web app for managing student records, attendance, and grades with role-based access.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">PHP</span>
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">MySQL</span>
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">Bootstrap</span>
+                        </div>
+                        <a href="#" class="text-sm font-semibold text-yellow-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                            View Project <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111111] border border-white/5 hover:border-yellow-500/30 transition-all duration-500">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="E-learning Platform" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute top-0 left-6 -translate-y-1/2 bg-yellow-500 text-black p-2 rounded-lg">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">E-Learning Platform</h3>
+                        <p class="text-gray-400 text-sm mb-4">Interactive learning management system with video courses, quizzes, and progress tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">React.js</span>
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">Node.js</span>
+                            <span class="text-[10px] px-3 py-1 border border-white/10 rounded-full text-yellow-500">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-sm font-semibold text-yellow-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                            View Project <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-yellow-500 font-mono text-sm">04. What's Next?</span>
+            <h2 class="text-5xl md:text-6xl font-bold font-display mt-4 mb-6">Get In Touch</h2>
+            <p class="text-gray-400 text-lg max-w-xl mx-auto mb-12">
+                I'm currently looking for internship opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+
+            <a href="mailto:alirazasindhi46@gmail.com" class="inline-flex items-center gap-3 px-10 py-5 bg-yellow-500 text-black font-bold rounded-xl hover:bg-yellow-400 transition-all hover:shadow-[0_0_30px_rgba(255,215,0,0.3)] text-lg">
+                <i class="fas fa-envelope"></i>
+                Say Hello
+            </a>
+
+            <!-- Contact Info Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mt-16">
+                <div class="glass-card p-6 rounded-xl border border-white/5">
+                    <i class="fas fa-phone text-yellow-500 text-xl mb-3"></i>
+                    <h4 class="font-medium mb-1">Phone</h4>
+                    <p class="text-gray-500 text-sm">0137-3410214</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl border border-white/5">
+                    <i class="fab fa-whatsapp text-yellow-500 text-xl mb-3"></i>
+                    <h4 class="font-medium mb-1">WhatsApp</h4>
+                    <a href="https://wa.me/9201373410214" class="text-gray-500 text-sm hover:text-yellow-500">Message Me</a>
+                </div>
+                <div class="glass-card p-6 rounded-xl border border-white/5">
+                    <i class="fas fa-map-marker-alt text-yellow-500 text-xl mb-3"></i>
+                    <h4 class="font-medium mb-1">Location</h4>
+                    <p class="text-gray-500 text-sm">Quest Nawabshah, PK</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 text-center">
+        <p class="text-gray-600 text-sm">
+            Designed & Built by <span class="text-yellow-500">Ali Raza</span> | 2024
+        </p>
+    </footer>
+
+</body>
+</html>
